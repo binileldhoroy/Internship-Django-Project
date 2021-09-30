@@ -1,0 +1,37 @@
+{% extends 'meetups/index.html' %}
+{% load static %}
+{% block subhead %}{{ details.title }}{% endblock %}
+{% block content %}
+        <article>
+            <img id="main-image" src="{{ details.image.url }}" alt="{{ meetup.title }}">
+        
+            <section id="location">
+              <h2>InternShip Location</h2>
+              <address>This Internship takes place in <span>{{ details.location.district }}</span> ({{ details.location.address }}).</address>
+            </section>
+        
+            <section id="details">
+              <h2>What's This Internship About?</h2>
+              <p>{{ details.description }}</p>
+              <footer>
+                <p>Need more details? Please <a href="">contact the organizer</a> (but don't spam us ;-)).</p>
+              </footer>
+            </section>
+
+            <section id="registration">
+              <h2>Join Us!</h2>
+              <form action="{% url 'intern-detail' details.slug %}" method="POST">
+                {% csrf_token %}
+                <ul>
+                  {{ form.as_ul }}
+                </ul><br>
+                <div class="row d-flex justify-content-center">
+                  <div class="col-md-6"> <button>Hover Me</button>
+                  </div>
+                </div>
+                
+              </form>
+            </section>
+          </article>
+      
+{% endblock %}
