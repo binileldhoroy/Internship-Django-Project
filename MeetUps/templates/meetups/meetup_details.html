@@ -1,5 +1,8 @@
 {% extends 'meetups/index.html' %}
 {% load static %}
+{% block staticlink %}
+    <link rel="stylesheet" href="{% static 'meetups/css/join-button.css' %}">
+{% endblock %}
 {% block subhead %}{{ details.title }}{% endblock %}
 {% block content %}
         <article>
@@ -14,7 +17,7 @@
               <h2>What's This Internship About?</h2>
               <p>{{ details.description }}</p>
               <footer>
-                <p>Need more details? Please <a href="">contact the organizer</a> (but don't spam us ;-)).</p>
+                <p>Need more details? Please <a href="mailto:{{ organizer_email }}">contact the organizer</a> (but don't spam us ;-)).</p>
               </footer>
             </section>
 
@@ -26,7 +29,7 @@
                   {{ form.as_ul }}
                 </ul><br>
                 <div class="row d-flex justify-content-center">
-                  <div class="col-md-6"> <button>Hover Me</button>
+                  <div class="col-md-6"> <button>Register</button>
                   </div>
                 </div>
                 
